@@ -68,7 +68,6 @@ fun RegistrationScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Логотип (замени на свой ресурс)
                 Surface(
                     shape = CircleShape,
                     color = Color.White,

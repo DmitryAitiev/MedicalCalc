@@ -50,4 +50,8 @@ class AuthRepositoryImpl: AuthListRepository {
                 }
             }
     }
+
+    override fun logout() {
+        auth.signOut()
+    }
 }

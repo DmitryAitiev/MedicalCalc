@@ -3,6 +3,7 @@ package com.example.medicalcalculator.presentation.authentication
 import androidx.lifecycle.ViewModel
 import com.example.medicalcalculator.data.repository.AuthRepositoryImpl
 import com.example.medicalcalculator.domain.usecases.authUseCases.AuthUseCase
+import com.example.medicalcalculator.domain.usecases.authUseCases.LogoutUseCase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,6 +21,7 @@ class AuthViewModel: ViewModel() {
 
     private val repository = AuthRepositoryImpl()
     private val authUseCase = AuthUseCase(repository)
+    private val logoutUseCase = LogoutUseCase(repository)
 
     private val _authResult = MutableStateFlow<AuthResult?>(null)
     val authResult: StateFlow<AuthResult?> = _authResult
@@ -50,7 +52,7 @@ class AuthViewModel: ViewModel() {
     }
 
     fun signOut() {
-        firebaseAuth.signOut()
+        logoutUseCase.invoke()
         _authResult.value = null
     }
 
